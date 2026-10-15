@@ -1,0 +1,258 @@
+/* =========================================
+RESET
+========================================= */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+html{scroll-behavior:smooth;}
+body{
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#1b0028,#32004d,#5b007f);
+color:#fff;
+overflow-x:hidden;
+}
+
+/* =========================================
+BIRTHDAY INTRO
+========================================= */
+#birthdayIntro{
+position:fixed;
+inset:0;
+z-index:99999;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+background:
+radial-gradient(circle at center,rgba(130,0,100,.28),transparent 42%),
+radial-gradient(circle at 20% 20%,rgba(255,40,150,.12),transparent 28%),
+#09000f;
+opacity:1;
+visibility:visible;
+transition:opacity .9s ease,visibility .9s ease;
+}
+#birthdayIntro.intro-finished{
+opacity:0;
+visibility:hidden;
+pointer-events:none;
+}
+.intro-stars{
+position:absolute;
+inset:0;
+background-image:
+radial-gradient(circle,#fff 1px,transparent 1px),
+radial-gradient(circle,rgba(255,120,210,.8) 1px,transparent 1px);
+background-size:70px 70px,110px 110px;
+background-position:0 0,30px 45px;
+opacity:.35;
+animation:introStars 12s linear infinite;
+}
+@keyframes introStars{
+to{background-position:0 500px,30px 545px;}
+}
+.intro-center{
+position:relative;
+z-index:5;
+text-align:center;
+padding:20px;
+}
+.intro-small{
+font-size:18px;
+letter-spacing:4px;
+color:#ffd6f0;
+opacity:0;
+animation:introFade .8s ease .35s forwards;
+}
+.intro-title{
+font-family:'Great Vibes',cursive;
+font-size:clamp(64px,12vw,125px);
+line-height:1;
+color:#ff8fd8;
+text-shadow:
+0 0 8px #ff4fa3,
+0 0 22px #ff1493,
+0 0 50px rgba(255,20,147,.85);
+opacity:0;
+transform:scale(.35);
+filter:blur(12px);
+animation:introTitle 2s cubic-bezier(.2,.8,.2,1) .65s forwards;
+}
+.intro-name{
+font-family:'Great Vibes',cursive;
+font-size:clamp(34px,6vw,62px);
+color:#fff;
+text-shadow:0 0 20px rgba(255,255,255,.7);
+opacity:0;
+transform:translateY(18px);
+animation:introFade .9s ease 2.45s forwards;
+}
+.intro-line{
+width:0;
+height:2px;
+margin:16px auto 0;
+background:#ff8fd8;
+box-shadow:0 0 15px #ff1493;
+animation:introLine 1.2s ease 2.8s forwards;
+}
+@keyframes introTitle{
+0%{opacity:0;transform:scale(.35);filter:blur(12px);}
+45%{opacity:1;transform:scale(1.12);filter:blur(0);}
+70%{transform:scale(.96);}
+100%{opacity:1;transform:scale(1);filter:blur(0);}
+}
+@keyframes introFade{
+from{opacity:0;transform:translateY(18px);}
+to{opacity:1;transform:translateY(0);}
+}
+@keyframes introLine{to{width:190px;}}
+.intro-heart{
+position:absolute;
+bottom:-40px;
+color:#ff3b91;
+text-shadow:0 0 10px #ff1493,0 0 22px #ff1493;
+animation:heartFloat 5s linear infinite;
+opacity:0;
+}
+@keyframes heartFloat{
+0%{transform:translateY(0) scale(.6) rotate(0);opacity:0;}
+15%{opacity:.85;}
+85%{opacity:.75;}
+100%{transform:translateY(-110vh) scale(1.2) rotate(25deg);opacity:0;}
+}
+.intro-sparkle{
+position:absolute;
+width:4px;
+height:4px;
+border-radius:50%;
+background:#fff;
+box-shadow:0 0 8px #fff,0 0 18px #ff75c8;
+animation:sparkle 1.8s ease-in-out infinite alternate;
+}
+@keyframes sparkle{
+from{opacity:.1;transform:scale(.5);}
+to{opacity:1;transform:scale(1.8);}
+}
+
+/* =========================================
+EXISTING WEBSITE
+========================================= */
+.stars{
+position:fixed;inset:0;z-index:-2;
+background:radial-gradient(circle,#ffffff 1px,transparent 1px);
+background-size:55px 55px;
+animation:starsMove 40s linear infinite;
+}
+@keyframes starsMove{
+from{background-position:0 0;}
+to{background-position:0 800px;}
+}
+.hero{
+min-height:100vh;display:flex;flex-direction:column;
+justify-content:center;align-items:center;text-align:center;padding:20px;
+}
+.hero h3{font-size:24px;color:#ffd54f;margin-bottom:15px;}
+.hero h1{
+font-family:'Great Vibes',cursive;font-size:72px;color:#ff8fd8;
+text-shadow:0 0 15px #ff4fa3,0 0 30px #ff1493;margin-bottom:10px;
+}
+.hero h2{font-size:38px;margin-bottom:20px;color:white;}
+#typingText{max-width:700px;font-size:20px;line-height:1.8;padding:0 20px;margin-bottom:35px;}
+#musicBtn{
+position:fixed;top:20px;right:20px;width:55px;height:55px;border:none;
+border-radius:50%;background:#ff1493;color:#fff;font-size:24px;cursor:pointer;
+box-shadow:0 0 20px #ff1493;transition:.3s;z-index:1000;
+}
+#musicBtn:hover{transform:scale(1.1);}
+#giftBtn{
+padding:18px 45px;border:none;border-radius:40px;font-size:20px;font-weight:bold;
+cursor:pointer;color:white;background:linear-gradient(45deg,#ff1493,#ff6f61);
+box-shadow:0 0 25px rgba(255,20,147,.5);transition:.3s;
+}
+#giftBtn:hover{transform:scale(1.05);}
+.gift-section,.surprise,.gallery,.letter{
+padding:80px 20px;text-align:center;display:none;
+}
+.gift-section{
+min-height:100vh;display:none;justify-content:center;align-items:center;flex-direction:column;
+}
+.gift-box{position:relative;width:220px;height:220px;cursor:pointer;perspective:1000px;}
+.gift-body{
+position:absolute;bottom:0;width:220px;height:150px;
+background:linear-gradient(145deg,#ff3b5f,#d4003f);border-radius:0 0 15px 15px;
+box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+.gift-body::before{
+content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);
+width:24px;height:100%;background:gold;
+}
+.gift-body::after{
+content:"";position:absolute;top:50%;left:0;transform:translateY(-50%);
+width:100%;height:24px;background:gold;
+}
+.gift-top{
+position:absolute;top:0;width:220px;height:70px;
+background:linear-gradient(145deg,#ff6b81,#ff3b5f);border-radius:15px;
+transform-origin:bottom;transition:1s;box-shadow:0 10px 20px rgba(0,0,0,.3);
+}
+.gift-top::after{
+content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);
+width:24px;height:100%;background:gold;
+}
+.gift-top::before{
+content:"🎀";position:absolute;left:50%;top:-30px;transform:translateX(-50%);font-size:42px;
+}
+.gift-box.open .gift-top{transform:rotateX(-130deg) translateY(-20px);}
+.surprise h1{font-size:55px;color:#ff99dd;margin-bottom:20px;}
+#cake{width:230px;max-width:90%;animation:floatCake 3s ease-in-out infinite;}
+@keyframes floatCake{0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
+.wish{max-width:700px;margin:30px auto;font-size:21px;line-height:1.8;}
+.gallery h2,.letter h2{font-size:42px;color:#ffd54f;margin-bottom:30px;}
+.slider{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
+.slider img{
+width:220px;height:300px;object-fit:cover;border-radius:18px;
+box-shadow:0 0 20px rgba(255,255,255,.2);transition:.4s;
+}
+.slider img:hover{transform:scale(1.05);}
+.letter p{max-width:750px;margin:auto;line-height:2;font-size:20px;}
+footer{text-align:center;padding:30px;color:#ddd;}
+@media(max-width:768px){
+.hero h1{font-size:52px}.hero h2{font-size:28px}
+#typingText{font-size:17px}.gift-box{transform:scale(.85)}
+.slider img{width:170px;height:240px}.surprise h1{font-size:38px}
+}
+@media(max-width:480px){
+.hero h1{font-size:42px}.hero h2{font-size:24px}#giftBtn{width:90%}
+}
+
+
+/* MEMORY SCRAPBOOK BOOK */
+.memory-book-section{display:none;padding:60px 18px 70px;min-height:100vh;background:radial-gradient(circle at top,#fff2f8 0,#f7dce8 52%,#efc9da 100%);color:#61364a;overflow:hidden}
+.book-intro{text-align:center;margin:0 auto 28px}.book-kicker{letter-spacing:2px;text-transform:uppercase;font-size:12px;color:#a35c7c}.book-intro h2{font-family:'Great Vibes',cursive!important;color:#9c426b!important;font-size:clamp(38px,7vw,58px)!important;margin:8px 0 5px!important}.book-intro p{margin:8px 0}.memory-book{position:relative;width:min(92vw,440px);height:min(125vw,590px);min-height:440px;margin:0 auto;perspective:1400px;filter:drop-shadow(0 22px 24px #8b466333)}
+.book-cover,.book-page{position:absolute;inset:0;width:100%;height:100%;border-radius:9px 18px 18px 9px;box-sizing:border-box;overflow:hidden}
+.book-cover{border:0;cursor:pointer;color:#fff8ee;background:linear-gradient(135deg,#8f315b,#c85f8a 48%,#8c315a);box-shadow:inset 8px 0 0 #702344,inset 12px 0 0 #ffffff26,inset -7px 0 0 #6f2544,0 0 0 7px #f7e9e5,0 0 0 9px #bd7b95;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;transform-origin:left center;transition:transform .9s cubic-bezier(.2,.75,.25,1),opacity .5s}
+.book-cover:before{content:'';position:absolute;inset:22px;border:1px solid #f9dce6;border-radius:4px;pointer-events:none}.book-cover:after{content:'✦  ♡  ✦';position:absolute;top:30px;left:0;right:0;text-align:center;color:#ffd9e7;font-size:18px;letter-spacing:8px}.cover-heart{font-size:35px;color:#ffd5e3;margin-top:28px;text-shadow:0 4px 0 #6f2544}.cover-small{font-size:12px;letter-spacing:5px;margin-top:4px}.cover-title{font-family:'Great Vibes',cursive;font-size:clamp(56px,12vw,83px);line-height:.95;text-align:center;text-shadow:0 3px 0 #762847}.cover-rule{width:90px;height:1px;background:#f8d9e4}.cover-bottom{font-family:'Great Vibes',cursive;font-size:25px}.cover-hint{position:absolute;bottom:39px;font-size:11px;letter-spacing:2px;color:#ffe6ee}
+.book-page{background:#fffaf0;border:8px solid #fff8ec;box-shadow:inset 0 0 0 1px #e9c9d3, inset 12px 0 0 #f3e2d8;padding:26px 23px 22px;display:flex;flex-direction:column;align-items:center;color:#8c4763;animation:pageIn .55s ease both}.book-page[hidden]{display:none}.book-page:before{content:'';position:absolute;top:0;bottom:0;left:17px;border-left:1px solid #e9c9d3}.page-decor{font-family:'Great Vibes',cursive;color:#cc7c9c;font-size:23px}.page-decor-top{margin:0 0 14px}.page-photo-wrap{width:100%;height:65%;padding:9px 9px 13px;background:white;box-shadow:0 4px 14px #6b3a4a20;transform:rotate(-1deg);box-sizing:border-box;border:1px solid #f1e5df}.page-photo-wrap img{width:100%;height:100%;object-fit:contain;display:block;background:#f7eef0}.page-number{font-size:11px;letter-spacing:2px;margin-top:14px;color:#b57990}.page-note{font-family:'Great Vibes',cursive;font-size:clamp(22px,5vw,29px);text-align:center;line-height:1.1;margin:8px 0 5px;max-width:300px}.page-hearts{color:#df729b;letter-spacing:2px;font-size:15px}.page-decor-bottom{margin-top:auto;font-size:19px}.page-nav{position:absolute;top:46%;width:38px;height:38px;border:0;border-radius:50%;background:#f4dce6;color:#a24670;font-size:30px;line-height:30px;cursor:pointer;box-shadow:0 3px 10px #6b3a4a20;z-index:3}.page-nav.prev{left:8px}.page-nav.next{right:8px}.page-nav:active{transform:scale(.93)}.book-footer{text-align:center;color:#8d4b66;font-size:12px;margin:28px 0 0;letter-spacing:.4px}
+@keyframes pageIn{from{opacity:.25;transform:rotateY(-10deg) translateX(12px)}to{opacity:1;transform:rotateY(0) translateX(0)}}
+@media(max-width:480px){.memory-book{height:125vw;min-height:450px;max-height:570px}.book-page{padding:22px 18px 18px}.page-photo-wrap{height:61%}.page-nav.prev{left:4px}.page-nav.next{right:4px}}
+
+/* Realistic page flip animation */
+.book-cover{backface-visibility:visible;transform-style:preserve-3d;z-index:2}
+.book-cover[hidden]{display:none}
+.book-page{transform-origin:left center;backface-visibility:hidden;transform-style:preserve-3d}
+.book-page.page-turn{animation:realPageFlip .72s cubic-bezier(.22,.7,.25,1) both}
+@keyframes realPageFlip{0%{opacity:.55;transform:perspective(1400px) rotateY(-82deg);filter:brightness(.78)}55%{opacity:1;transform:perspective(1400px) rotateY(8deg);filter:brightness(1.04)}100%{opacity:1;transform:perspective(1400px) rotateY(0);filter:brightness(1)}}
+
+/* Birthday heading fix */
+.surprise h1 {
+font-family: 'Great Vibes', cursive;
+font-size: clamp(38px, 8vw, 68px);
+line-height: 1.3;
+color: #ffb6e6;
+text-shadow: 0 0 15px #ff1493,
+0 0 35px rgba(255, 20, 147, 0.5);
+margin: 0 auto 25px;
+padding: 0 10px;
+}
+
